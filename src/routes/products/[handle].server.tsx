@@ -1,4 +1,4 @@
-import {Suspense} from 'react';
+import { Suspense } from 'react';
 import {
   gql,
   ProductOptionsProvider,
@@ -10,9 +10,9 @@ import {
   useShopQuery,
 } from '@shopify/hydrogen';
 
-import {MEDIA_FRAGMENT} from '~/lib/fragments';
-import {getExcerpt} from '~/lib/utils';
-import {NotFound, Layout, ProductSwimlane} from '~/components/index.server';
+import { MEDIA_FRAGMENT } from '~/lib/fragments';
+import { getExcerpt } from '~/lib/utils';
+import { NotFound, Layout, ProductSwimlane } from '~/components/index.server';
 import {
   Heading,
   ProductDetail,
@@ -21,16 +21,17 @@ import {
   Section,
   Text,
 } from '~/components';
+import TestClientParent from '~/components/TestClientParent.client';
 
 export default function Product() {
-  const {handle} = useRouteParams();
+  const { handle } = useRouteParams();
   const {
-    language: {isoCode: languageCode},
-    country: {isoCode: countryCode},
+    language: { isoCode: languageCode },
+    country: { isoCode: countryCode },
   } = useLocalization();
 
   const {
-    data: {product, shop},
+    data: { product, shop },
   } = useShopQuery({
     query: PRODUCT_QUERY,
     variables: {
@@ -52,11 +53,12 @@ export default function Product() {
     },
   });
 
-  const {media, title, vendor, descriptionHtml, id} = product;
-  const {shippingPolicy, refundPolicy} = shop;
+  const { media, title, vendor, descriptionHtml, id } = product;
+  const { shippingPolicy, refundPolicy } = shop;
 
   return (
     <Layout>
+      <TestClientParent />
       <Suspense>
         <Seo type="product" data={product} />
       </Suspense>
