@@ -16,8 +16,6 @@ import {useDrawer} from './Drawer.client';
 
 import type {EnhancedMenu} from '~/lib/utils';
 
-import * as style from './Header.css'
-
 /**
  * A client component that specifies the content of the header on the website
  */
@@ -42,7 +40,7 @@ export function Header({title, menu}: {title: string; menu?: EnhancedMenu}) {
   } = useDrawer();
 
   return (
-    <div className={style.root}>
+    <div>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
       <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu!} />
       <DesktopHeader
