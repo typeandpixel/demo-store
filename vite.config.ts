@@ -4,7 +4,7 @@ import hydrogen from '@shopify/hydrogen/plugin';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 export default defineConfig({
-  plugins: [hydrogen(), vanillaExtractPlugin()],
+  plugins: [hydrogen({ experimental: { css: 'global' } }), vanillaExtractPlugin()],
   resolve: {
     alias: [{find: /^~\/(.*)/, replacement: '/src/$1'}],
   },
